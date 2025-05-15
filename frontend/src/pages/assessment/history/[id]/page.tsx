@@ -58,10 +58,10 @@ export default function AssessmentDetailsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-900">
         <div className="text-center">
           <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-pink-500"></div>
-          <p className="mt-4 text-gray-600">Loading assessment details...</p>
+          <p className="mt-4 text-gray-600 dark:text-slate-200">Loading assessment details...</p>
         </div>
       </div>
     );
@@ -74,14 +74,16 @@ export default function AssessmentDetailsPage() {
         <div className="mx-auto max-w-4xl px-4 py-8">
           <Link
             to="/assessment/history"
-            className="mb-8 inline-flex items-center text-gray-600 hover:text-gray-900 dark:text-slate-200 dark:hover:text-pink-700"
+            className="mb-8 inline-flex items-center text-gray-600 hover:text-gray-900 dark:text-slate-200 dark:hover:text-pink-400"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to History
           </Link>
 
-          <div className="rounded-lg bg-white p-6 text-center shadow-sm">
-            <p className="mb-6 text-gray-600">Invalid assessment data format.</p>
+          <div className="rounded-lg bg-white p-6 text-center shadow-sm dark:border dark:border-slate-800 dark:bg-slate-900">
+            <p className="mb-6 text-gray-600 dark:text-slate-200">
+              Invalid assessment data format.
+            </p>
           </div>
         </div>
       </div>
@@ -93,27 +95,27 @@ export default function AssessmentDetailsPage() {
   const recommendations = assessmentData.recommendations || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <div className="mx-auto max-w-4xl px-4 py-8">
         <Link
           to="/assessment/history"
-          className="mb-8 inline-flex items-center text-gray-600 hover:text-gray-900 dark:text-slate-200 dark:hover:text-pink-700"
+          className="mb-8 inline-flex items-center text-gray-600 hover:text-gray-900 dark:text-slate-200 dark:hover:text-pink-400"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to History
         </Link>
 
-        <div className="rounded-lg border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-gray-900">
+        <div className="rounded-lg border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100">
                 Assessment Details
               </h1>
-              <p className="text-sm text-gray-500 dark:text-slate-200">
+              <p className="text-sm text-gray-500 dark:text-slate-300">
                 {formatDate(assessmentData.date)}
               </p>
             </div>
-            <span className="inline-flex items-center rounded-full bg-pink-100 px-3 py-1 text-sm font-medium text-pink-800">
+            <span className="inline-flex items-center rounded-full bg-pink-100 px-3 py-1 text-sm font-medium text-pink-800 dark:bg-pink-900/30 dark:text-pink-400">
               {formatValue(assessmentData.pattern)}
             </span>
           </div>
@@ -121,8 +123,10 @@ export default function AssessmentDetailsPage() {
           <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-gray-400 dark:text-slate-200" />
-                <span className="text-lg font-medium text-pink-700">Cycle Information</span>
+                <Calendar className="h-5 w-5 text-gray-400 dark:text-slate-400" />
+                <span className="text-lg font-medium text-pink-700 dark:text-pink-400">
+                  Cycle Information
+                </span>
               </div>
               <div className="space-y-2">
                 <p className="text-sm text-gray-600 dark:text-slate-200">
@@ -141,8 +145,10 @@ export default function AssessmentDetailsPage() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Activity className="h-5 w-5 text-gray-400" />
-                <span className="text-lg font-medium text-pink-700">Flow & Pain</span>
+                <Activity className="h-5 w-5 text-gray-400 dark:text-slate-400" />
+                <span className="text-lg font-medium text-pink-700 dark:text-pink-400">
+                  Flow & Pain
+                </span>
               </div>
               <div className="space-y-2">
                 <p className="text-sm text-gray-600 dark:text-slate-200">
@@ -160,21 +166,23 @@ export default function AssessmentDetailsPage() {
           <div className="space-y-6">
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <Droplet className="h-5 w-5 text-gray-400" />
-                <h2 className="text-lg font-medium text-pink-700">Physical Symptoms</h2>
+                <Droplet className="h-5 w-5 text-gray-400 dark:text-slate-400" />
+                <h2 className="text-lg font-medium text-pink-700 dark:text-pink-400">
+                  Physical Symptoms
+                </h2>
               </div>
               <div className="flex flex-wrap gap-2">
                 {physicalSymptoms.length > 0 ? (
                   physicalSymptoms.map((symptom: string, index: number) => (
                     <span
                       key={index}
-                      className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-800"
+                      className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-800 dark:bg-slate-800 dark:text-slate-200"
                     >
                       {symptom}
                     </span>
                   ))
                 ) : (
-                  <span className="text-sm text-gray-500 dark:text-slate-200">
+                  <span className="text-sm text-gray-500 dark:text-slate-300">
                     No physical symptoms reported
                   </span>
                 )}
@@ -183,21 +191,23 @@ export default function AssessmentDetailsPage() {
 
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <Brain className="h-5 w-5 text-gray-400" />
-                <h2 className="text-lg font-medium text-pink-700">Emotional Symptoms</h2>
+                <Brain className="h-5 w-5 text-gray-400 dark:text-slate-400" />
+                <h2 className="text-lg font-medium text-pink-700 dark:text-pink-400">
+                  Emotional Symptoms
+                </h2>
               </div>
               <div className="flex flex-wrap gap-2">
                 {emotionalSymptoms.length > 0 ? (
                   emotionalSymptoms.map((symptom: string, index: number) => (
                     <span
                       key={index}
-                      className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-800 dark:text-slate-200"
+                      className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-800 dark:bg-slate-800 dark:text-slate-200"
                     >
                       {symptom}
                     </span>
                   ))
                 ) : (
-                  <span className="text-sm text-gray-500 dark:text-slate-200">
+                  <span className="text-sm text-gray-500 dark:text-slate-300">
                     No emotional symptoms reported
                   </span>
                 )}
@@ -206,7 +216,7 @@ export default function AssessmentDetailsPage() {
 
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <Heart className="h-5 w-5 text-gray-400" />
+                <Heart className="h-5 w-5 text-gray-400 dark:text-slate-400" />
                 <h2 className="text-lg font-medium text-gray-900 dark:text-slate-100">
                   Recommendations
                 </h2>
@@ -217,15 +227,21 @@ export default function AssessmentDetailsPage() {
                     (rec: { title: string; description: string }, index: number) => (
                       <div
                         key={index}
-                        className="rounded-lg border bg-gray-50 p-4 dark:border-slate-800"
+                        className="rounded-lg border bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-800"
                       >
-                        <h3 className="text-xl font-medium text-pink-600">{rec.title}</h3>
-                        <p className="mt-1 text-sm text-gray-600">{rec.description}</p>
+                        <h3 className="text-xl font-medium text-pink-600 dark:text-pink-400">
+                          {rec.title}
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-600 dark:text-slate-200">
+                          {rec.description}
+                        </p>
                       </div>
                     )
                   )
                 ) : (
-                  <p className="text-sm text-gray-500">No recommendations available</p>
+                  <p className="text-sm text-gray-500 dark:text-slate-300">
+                    No recommendations available
+                  </p>
                 )}
               </div>
             </div>

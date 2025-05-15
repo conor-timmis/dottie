@@ -61,10 +61,10 @@ export default function HistoryPage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-900">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-pink-600"></div>
-          <p className="mt-4 text-gray-600">Loading assessments...</p>
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-pink-500"></div>
+          <p className="mt-4 text-gray-600 dark:text-slate-200">Loading assessments...</p>
         </div>
       </div>
     );
@@ -72,7 +72,7 @@ export default function HistoryPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
         <div className="mx-auto max-w-4xl px-4 py-8">
           <div className="mb-8 flex items-center justify-between">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100">
@@ -80,37 +80,41 @@ export default function HistoryPage() {
             </h1>
             <Link
               to="/assessment/age-verification"
-              className="inline-flex items-center rounded-lg bg-pink-600 px-4 py-2 text-white transition-colors hover:bg-pink-700 hover:text-white"
+              className="inline-flex items-center rounded-lg bg-pink-500 px-4 py-2 text-white transition-colors hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
             >
               New Assessment
             </Link>
           </div>
 
           {error ? (
-            <div className="py-12 text-center">
-              <div className="mb-4 text-red-500">⚠️</div>
-              <h3 className="mt-2 text-sm font-medium text-gray-900">{error}</h3>
+            <div className="rounded-lg border bg-white p-6 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="mb-4 text-red-500 dark:text-red-400">⚠️</div>
+              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-slate-100">
+                {error}
+              </h3>
               <div className="mt-6">
                 <button
                   type="button"
                   onClick={() => window.location.reload()}
-                  className="inline-flex w-full items-center rounded-lg bg-pink-600 px-4 py-2 text-white transition-colors hover:bg-pink-700"
+                  className="inline-flex w-full items-center rounded-lg bg-pink-500 px-4 py-2 text-white transition-colors hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
                 >
                   Retry
                 </button>
               </div>
             </div>
           ) : assessments.length === 0 ? (
-            <div className="py-12 text-center">
-              <Calendar className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900">No assessments yet</h3>
-              <p className="mt-1 text-sm text-gray-500">
+            <div className="rounded-lg border bg-white p-6 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <Calendar className="mx-auto h-12 w-12 text-gray-400 dark:text-slate-400" />
+              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-slate-100">
+                No assessments yet
+              </h3>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-300">
                 Start your first assessment to track your menstrual health.
               </p>
               <div className="mt-6">
                 <Link
                   to="/assessment"
-                  className="inline-flex items-center rounded-lg bg-pink-600 px-4 py-2 text-white transition-colors hover:bg-pink-700"
+                  className="inline-flex items-center rounded-lg bg-pink-500 px-4 py-2 text-white transition-colors hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
                 >
                   Start Assessment
                 </Link>
@@ -125,23 +129,30 @@ export default function HistoryPage() {
                   <Link
                     key={assessment.id}
                     to={`/assessment/history/${assessment.id}`}
-                    className="block rounded-lg border bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800"
+                    className="block rounded-lg border bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                   >
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="inline-flex items-center rounded-full bg-pink-100 px-2.5 py-2 text-xs font-medium text-pink-800">
+                          <span className="inline-flex items-center rounded-full bg-pink-100 px-2.5 py-2 text-xs font-medium text-pink-800 dark:bg-pink-900/30 dark:text-pink-400">
                             {formatValue(data?.pattern)}
                           </span>
-                          <span className="text-sm text-gray-500">{formatDate(data?.date)}</span>
+                          <span className="text-sm text-gray-500 dark:text-slate-300">
+                            {formatDate(data?.date)}
+                          </span>
                         </div>
-                        <div className="mt-2 text-sm text-gray-600">
+                        <div className="mt-2 text-sm text-gray-600 dark:text-slate-200">
                           <p>
-                            <span className="text-gray-900">Age:</span> {formatValue(data?.age)}
+                            <span className="font-medium text-gray-900 dark:text-slate-100">
+                              Age:
+                            </span>{' '}
+                            {formatValue(data?.age)}
                             {data?.age && data.age !== 'under-13' ? ' years' : ''}
                           </p>
                           <p>
-                            <span className="text-gray-900">Cycle Length:</span>{' '}
+                            <span className="font-medium text-gray-900 dark:text-slate-100">
+                              Cycle Length:
+                            </span>{' '}
                             {formatValue(data?.cycleLength)}
                             {data?.cycleLength &&
                             !['other', 'varies', 'not-sure'].includes(data.cycleLength)
@@ -150,7 +161,7 @@ export default function HistoryPage() {
                           </p>
                         </div>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-gray-400" />
+                      <ChevronRight className="h-5 w-5 text-gray-400 dark:text-slate-400" />
                     </div>
                   </Link>
                 );

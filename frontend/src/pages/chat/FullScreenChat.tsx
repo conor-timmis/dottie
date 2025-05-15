@@ -103,26 +103,26 @@ export function FullscreenChat({ onClose, initialMessage, setIsFullscreen }: Ful
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex w-full flex-col bg-white dark:bg-gray-900">
+    <div className="fixed inset-0 z-50 flex w-full flex-col bg-white dark:bg-slate-900">
       <div className="container mx-auto flex h-full max-w-6xl flex-col rounded-lg border border-gray-200 p-0 shadow-lg dark:border-slate-800">
-        <header className="flex items-center justify-between rounded-t-lg border-b bg-gradient-to-r from-pink-50 to-white p-4 dark:from-gray-900 dark:to-black">
-          <h1 className="text-lg font-bold text-pink-600">Chat with Dottie</h1>
+        <header className="flex items-center justify-between rounded-t-lg border-b border-gray-200 bg-gradient-to-r from-pink-50 to-white p-4 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800">
+          <h1 className="text-lg font-bold text-pink-500 dark:text-pink-400">Chat with Dottie</h1>
           <div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsFullscreen(false)}
-              className="rounded-full hover:bg-pink-100"
+              className="rounded-full hover:bg-pink-100 dark:hover:bg-slate-800"
             >
-              <Minimize2 className="h-4 w-4 text-pink-600" />
+              <Minimize2 className="h-4 w-4 text-pink-500 dark:text-pink-400" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="rounded-full hover:bg-pink-100"
+              className="rounded-full hover:bg-pink-100 dark:hover:bg-slate-800"
             >
-              <X className="h-4 w-4 text-pink-600" />
+              <X className="h-4 w-4 text-pink-500 dark:text-pink-400" />
             </Button>
           </div>
         </header>
@@ -139,8 +139,8 @@ export function FullscreenChat({ onClose, initialMessage, setIsFullscreen }: Ful
                   <div
                     className={`max-w-[80%] rounded-xl p-3 ${
                       message.role === 'user'
-                        ? 'bg-pink-600 text-white'
-                        : 'border border-gray-100 bg-gray-50 text-gray-900'
+                        ? 'bg-pink-500 text-white dark:bg-pink-500'
+                        : 'border border-gray-200 bg-gray-50 text-gray-900 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-100'
                     }`}
                   >
                     {message.content}
@@ -149,26 +149,26 @@ export function FullscreenChat({ onClose, initialMessage, setIsFullscreen }: Ful
               ))}
               {isLoading && (
                 <div className="flex animate-fadeIn justify-start">
-                  <div className="rounded-xl border border-gray-100 bg-gray-50 p-3">
-                    <Loader2 className="h-4 w-4 animate-spin text-pink-600" />
+                  <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 dark:border-slate-800 dark:bg-slate-800">
+                    <Loader2 className="h-4 w-4 animate-spin text-pink-500 dark:text-pink-400" />
                   </div>
                 </div>
               )}
             </div>
           </ScrollArea>
-          <div className="flex gap-2 rounded-b-lg border-t bg-white p-4 dark:bg-gray-900">
+          <div className="flex gap-2 border-t border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               disabled={isLoading}
-              className="rounded-full border-gray-200 focus:border-pink-300 focus:ring-pink-200"
+              className="rounded-full border-gray-200 bg-white focus:border-pink-300 focus:ring-pink-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-400 dark:focus:border-pink-400 dark:focus:ring-pink-500"
             />
             <Button
               onClick={() => handleSend()}
               disabled={isLoading}
-              className="rounded-full bg-pink-600 text-white hover:bg-pink-700"
+              className="rounded-full bg-pink-500 text-white hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
             >
               <Send className="h-4 w-4" />
             </Button>

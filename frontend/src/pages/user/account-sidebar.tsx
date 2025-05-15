@@ -39,8 +39,8 @@ export default function AccountSidebar() {
             to={link.href}
             className={`flex items-center rounded-md px-4 py-3 text-sm font-medium ${
               currentPath === link.href
-                ? 'bg-pink-100 text-pink-700'
-                : 'text-gray-700 hover:bg-pink-50 hover:text-pink-600 dark:text-slate-200 dark:hover:text-pink-600'
+                ? 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400'
+                : 'text-gray-700 hover:bg-pink-50 hover:text-pink-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-pink-400'
             }`}
           >
             <span className="mr-3">{link.icon}</span>

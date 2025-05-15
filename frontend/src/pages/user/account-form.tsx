@@ -43,8 +43,10 @@ export default function AccountForm() {
     setShowDeleteConfirmation(true);
     toast.custom(
       (t: string | number) => (
-        <div className="w-full max-w-md rounded-lg border border-red-200 bg-white p-4 shadow-lg dark:border-slate-800 dark:bg-gray-900">
-          <h3 className="text-lg font-medium text-red-600">Confirm Account Deletion</h3>
+        <div className="w-full max-w-md rounded-lg border border-red-200 bg-white p-4 shadow-lg dark:border-red-900/50 dark:bg-slate-900">
+          <h3 className="text-lg font-medium text-red-600 dark:text-red-400">
+            Confirm Account Deletion
+          </h3>
           <p className="mt-2 text-gray-700 dark:text-slate-200">
             Are you sure you want to delete your account? This action cannot be undone.
           </p>
@@ -55,7 +57,7 @@ export default function AccountForm() {
                 toast.dismiss(t);
                 setShowDeleteConfirmation(false);
               }}
-              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-slate-200 dark:hover:text-gray-900"
+              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-slate-200 dark:hover:bg-slate-800"
             >
               Cancel
             </button>
@@ -79,7 +81,7 @@ export default function AccountForm() {
                   setIsLoading(false);
                 }
               }}
-              className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
+              className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400 dark:focus:ring-offset-slate-900"
             >
               Delete Account
             </button>
@@ -134,18 +136,18 @@ export default function AccountForm() {
         </button>
       </form>
 
-      <div className="border-t border-slate-200 pt-6 dark:border-slate-600">
-        <h2 className="mb-4 text-lg font-medium text-gray-900 dark:text-slate-200">Danger Zone</h2>
-        <div className="rounded-md border border-red-200 bg-red-50 p-4">
-          <h3 className="text-sm font-medium text-red-800">Delete Account</h3>
-          <p className="mt-1 text-sm text-red-700">
+      <div className="border-t border-slate-200 pt-6 dark:border-slate-700">
+        <h2 className="mb-4 text-lg font-medium text-gray-900 dark:text-slate-100">Danger Zone</h2>
+        <div className="rounded-md border border-red-200 bg-red-50 p-4 dark:border-red-900/50 dark:bg-red-900/20">
+          <h3 className="text-sm font-medium text-red-800 dark:text-red-400">Delete Account</h3>
+          <p className="mt-1 text-sm text-red-700 dark:text-red-300">
             Once you delete your account, there is no going back. Please be certain.
           </p>
           <button
             type="button"
             onClick={handleDeleteAccount}
             disabled={isLoading}
-            className="mt-4 rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
+            className="mt-4 rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400 dark:focus:ring-offset-slate-900"
           >
             {isLoading ? 'Deleting...' : 'Delete Account'}
           </button>

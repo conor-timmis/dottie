@@ -89,7 +89,10 @@ export default function PasswordForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <label htmlFor="currentPassword" className="block text-sm font-medium">
+        <label
+          htmlFor="currentPassword"
+          className="block text-sm font-medium text-gray-700 dark:text-slate-200"
+        >
           Current Password
         </label>
         <input
@@ -98,17 +101,20 @@ export default function PasswordForm() {
           name="currentPassword"
           value={formData.currentPassword}
           onChange={handleChange}
-          className={`w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring ${
-            errors.currentPassword ? 'border-destructive' : ''
+          className={`w-full rounded-md border px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:focus:ring-pink-400 ${
+            errors.currentPassword ? 'border-red-500 dark:border-red-400' : ''
           }`}
         />
         {errors.currentPassword && (
-          <p className="text-sm text-destructive">{errors.currentPassword}</p>
+          <p className="text-sm text-red-600 dark:text-red-400">{errors.currentPassword}</p>
         )}
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="newPassword" className="block text-sm font-medium">
+        <label
+          htmlFor="newPassword"
+          className="block text-sm font-medium text-gray-700 dark:text-slate-200"
+        >
           New Password
         </label>
         <input
@@ -117,15 +123,20 @@ export default function PasswordForm() {
           name="newPassword"
           value={formData.newPassword}
           onChange={handleChange}
-          className={`w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring ${
-            errors.newPassword ? 'border-destructive' : ''
+          className={`w-full rounded-md border px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:focus:ring-pink-400 ${
+            errors.newPassword ? 'border-red-500 dark:border-red-400' : ''
           }`}
         />
-        {errors.newPassword && <p className="text-sm text-destructive">{errors.newPassword}</p>}
+        {errors.newPassword && (
+          <p className="text-sm text-red-600 dark:text-red-400">{errors.newPassword}</p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="confirmPassword" className="block text-sm font-medium">
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium text-gray-700 dark:text-slate-200"
+        >
           Confirm New Password
         </label>
         <input
@@ -134,19 +145,19 @@ export default function PasswordForm() {
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
-          className={`w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring ${
-            errors.confirmPassword ? 'border-destructive' : ''
+          className={`w-full rounded-md border px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:focus:ring-pink-400 ${
+            errors.confirmPassword ? 'border-red-500 dark:border-red-400' : ''
           }`}
         />
         {errors.confirmPassword && (
-          <p className="text-sm text-destructive">{errors.confirmPassword}</p>
+          <p className="text-sm text-red-600 dark:text-red-400">{errors.confirmPassword}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full rounded-md px-4 py-2 font-medium text-white focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50"
+        className="w-full rounded-md bg-pink-500 px-4 py-2 font-medium text-white hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:opacity-50 dark:bg-pink-500 dark:hover:bg-pink-600 dark:focus:ring-pink-400 dark:focus:ring-offset-slate-900"
       >
         {isLoading ? 'Updating...' : 'Change Password'}
       </button>

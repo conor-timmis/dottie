@@ -452,7 +452,7 @@ export default function ResultsPage() {
 
   useEffect(() => {
     if (ref.current) {
-      const maxHeight = parseFloat(getComputedStyle(ref.current).lineHeight)* 2;
+      const maxHeight = parseFloat(getComputedStyle(ref.current).lineHeight) * 2;
       setIsClamped(ref.current.scrollHeight > maxHeight);
     }
   }, [symptoms]);
@@ -460,18 +460,20 @@ export default function ResultsPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <main className="mx-auto w-full max-w-4xl flex-1 p-6">
-        <div className="mb-8 h-2 w-full rounded-full bg-gray-200">
+        <div className="mb-8 h-2 w-full rounded-full bg-gray-200 dark:bg-slate-700">
           <div className="h-2 w-full rounded-full bg-pink-500 transition-all duration-500"></div>
         </div>
 
         <div className="mb-8 text-center">
-          <h1 className="mb-3 text-3xl font-bold dark:text-slate-100">Your Assessment Results</h1>
+          <h1 className="mb-3 text-3xl font-bold text-gray-900 dark:text-slate-100">
+            Your Assessment Results
+          </h1>
           <p className="text-gray-600 dark:text-slate-200">
             {" Based on your responses, here's what we've found about your menstrual health."}
           </p>
         </div>
 
-        <Card className="mb-8 w-full border shadow-md transition-shadow duration-300 hover:shadow-lg dark:border-slate-800">
+        <Card className="mb-8 w-full border shadow-md transition-shadow duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
           <CardContent className="pb-8 pt-8">
             <div className="mb-8 text-center">
               <img
@@ -479,7 +481,7 @@ export default function ResultsPage() {
                 className="mx-auto mb-2 h-24 w-24"
                 alt="menstrual-pattern-icon"
               />
-              <h2 className="mb-2 text-2xl font-bold text-pink-600">
+              <h2 className="mb-2 text-2xl font-bold text-pink-500 dark:text-pink-400">
                 {patternData[pattern].title}
               </h2>
               <p className="mx-auto max-w-2xl text-gray-600 dark:text-slate-200">
@@ -487,17 +489,19 @@ export default function ResultsPage() {
               </p>
             </div>
 
-            <div className="mb-8 grid grid-cols-1 gap-6 dark:text-gray-900 md:grid-cols-2 items-start">
-              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img src="/resultAssets/time.svg" className="h-[55px] w-[55px]" alt="time-icon" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-medium">Age Range</h3>
-                  <p className="text-gray-600">{age || 'Not specified'}</p>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Age Range
+                  </h3>
+                  <p className="text-gray-600 dark:text-slate-200">{age || 'Not specified'}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img
                     src="/resultAssets/calendar.svg"
@@ -506,20 +510,28 @@ export default function ResultsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-medium">Cycle Length</h3>
-                  <p className="text-gray-600">{cycleLength || 'Not specified'}</p>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Cycle Length
+                  </h3>
+                  <p className="text-gray-600 dark:text-slate-200">
+                    {cycleLength || 'Not specified'}
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img src="/resultAssets/drop.svg" className="h-[55px] w-[55px]" alt="drop-icon" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-medium">Period Duration</h3>
-                  <p className="text-gray-600">{periodDuration || 'Not specified'}</p>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Period Duration
+                  </h3>
+                  <p className="text-gray-600 dark:text-slate-200">
+                    {periodDuration || 'Not specified'}
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img
                     src="/resultAssets/d-drop.svg"
@@ -528,11 +540,15 @@ export default function ResultsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-medium">Flow Level</h3>
-                  <p className="text-gray-600">{flowLevel || 'Not specified'}</p>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Flow Level
+                  </h3>
+                  <p className="text-gray-600 dark:text-slate-200">
+                    {flowLevel || 'Not specified'}
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img
                     src="/resultAssets/emotion.svg"
@@ -541,11 +557,15 @@ export default function ResultsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-lg font-medium">Pain Level</h3>
-                  <p className="text-gray-600">{painLevel || 'Not specified'}</p>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Pain Level
+                  </h3>
+                  <p className="text-gray-600 dark:text-slate-200">
+                    {painLevel || 'Not specified'}
+                  </p>
                 </div>
               </div>
-              <div className="flex w-full max-w-full items-start gap-3 rounded-xl bg-gray-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-4 dark:bg-slate-800">
                 <div>
                   <img
                     src="/resultAssets/track-time.svg"
@@ -554,41 +574,52 @@ export default function ResultsPage() {
                   />
                 </div>
                 <div className="flex-1 overflow-x-auto">
-                  <h3 className="mb-2 text-lg font-medium">Symptoms</h3>
-                  <p 
-                  id="symptoms-content" 
-                  title={symptoms.length > 0 ? symptoms.join(', ') : 'None reported'} 
-                  aria-label={symptoms.length > 0 ? symptoms.join(', ') : 'None reported'} 
-                  ref={ref} 
-                  className={`whitespace-normal break-words text-gray-600 ${expandableSymptoms ? '' : 'line-clamp-2'} whitespace-pre-line`}>
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Symptoms
+                  </h3>
+                  <p
+                    id="symptoms-content"
+                    title={symptoms.length > 0 ? symptoms.join(', ') : 'None reported'}
+                    aria-label={symptoms.length > 0 ? symptoms.join(', ') : 'None reported'}
+                    ref={ref}
+                    className={`whitespace-normal break-words text-gray-600 dark:text-slate-200 ${expandableSymptoms ? '' : 'line-clamp-2'} whitespace-pre-line`}
+                  >
                     {symptoms.length > 0 ? symptoms.join(', ') : 'None reported'}
                   </p>
 
-                  {isClamped ? 
+                  {isClamped ? (
                     <button
-                    onClick={() => setExpandableSymptoms((prev) => !prev)}
-                    className="text-sm text-pink-600 hover:text-pink-700"
-                    aria-expanded={expandableSymptoms}
-                    aria-controls="symptoms-content"
-                  >
-                    {expandableSymptoms ? 'View Less' : 'View More'}
-                  </button> : ''}
+                      type="button"
+                      onClick={() => setExpandableSymptoms((prev) => !prev)}
+                      className="text-sm text-pink-500 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-300"
+                      aria-expanded={expandableSymptoms}
+                      aria-controls="symptoms-content"
+                    >
+                      {expandableSymptoms ? 'View Less' : 'View More'}
+                    </button>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
             </div>
 
-            <h3 className="mb-4 text-xl font-bold">Recommendations</h3>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-slate-100">
+              Recommendations
+            </h3>
+            <div className="space-y-4">
               {patternData[pattern].recommendations.map((rec, index) => (
                 <div
                   key={index}
-                  className="rounded-xl border p-4 transition-colors duration-300 hover:bg-pink-50 dark:border-slate-800 dark:hover:text-gray-900"
+                  className="rounded-xl border p-4 transition-colors duration-300 hover:bg-pink-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="text-2xl">{rec.icon}</div>
+                    <div className="text-2xl text-gray-900 dark:text-slate-100">{rec.icon}</div>
                     <div>
-                      <h4 className="text-lg font-medium">{rec.title}</h4>
-                      <p className="text-gray-600">{rec.description}</p>
+                      <h4 className="text-lg font-medium text-gray-900 dark:text-slate-100">
+                        {rec.title}
+                      </h4>
+                      <p className="text-gray-600 dark:text-slate-200">{rec.description}</p>
                     </div>
                   </div>
                 </div>
@@ -599,27 +630,27 @@ export default function ResultsPage() {
 
         <div className="mb-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Button
-            className="flex items-center justify-center gap-2 bg-pink-600 px-6 py-6 text-lg text-white hover:bg-pink-700"
+            className="flex items-center justify-center gap-2 bg-pink-500 px-6 py-6 text-lg text-white hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
             onClick={() => setIsChatOpen(true)}
           >
             <MessageCircle className="h-5 w-5" />
             Chat with Dottie
           </Button>
           <Button
-            className="flex items-center justify-center gap-2 border border-pink-200 bg-white px-6 py-6 text-lg text-pink-600 hover:bg-pink-50"
+            className="flex items-center justify-center gap-2 border border-pink-200 bg-white px-6 py-6 text-lg text-pink-500 hover:bg-pink-50 dark:border-slate-800 dark:bg-slate-900 dark:text-pink-400 dark:hover:bg-slate-800"
             onClick={handleSaveResults}
             disabled={isSaving}
           >
-            <Save className="h-5 w-5 hover:text-pink-700" />
+            <Save className="h-5 w-5" />
             {isSaving ? 'Saving...' : 'Save Results'}
           </Button>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <div className="flex justify-center gap-4">
           <Link to="/assessment/history">
             <Button
               variant="outline"
-              className="flex items-center px-6 py-6 text-lg dark:bg-gray-900 dark:text-pink-600 dark:hover:text-pink-700"
+              className="flex items-center px-6 py-6 text-lg text-gray-700 hover:bg-gray-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
             >
               View History
             </Button>

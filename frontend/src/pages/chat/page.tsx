@@ -88,39 +88,35 @@ export function ChatModal({ isOpen, onClose, initialMessage, setIsFullscreen }: 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="overflow-hidden rounded-xl border-pink-100 bg-white p-0 shadow-lg dark:border-slate-800 dark:bg-gray-900 sm:max-w-[500px]">
-        <DialogHeader className="flex flex-row items-center justify-between border-b bg-gradient-to-r from-pink-50 to-white p-4 dark:from-gray-900 dark:to-black">
+      <DialogContent className="overflow-hidden rounded-xl border-pink-100 bg-white p-0 shadow-lg dark:border-slate-800 dark:bg-slate-900 sm:max-w-[500px]">
+        <DialogHeader className="flex flex-row items-center justify-between border-b border-gray-200 bg-gradient-to-r from-pink-50 to-white p-4 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800">
           <div className="flex items-center gap-2">
-            <MessageCircle className="h-5 w-5 text-pink-600" />
-            <DialogTitle className="text-lg font-bold text-pink-600">Chat with Dottie</DialogTitle>
+            <MessageCircle className="h-5 w-5 text-pink-500 dark:text-pink-400" />
+            <DialogTitle className="text-lg font-bold text-pink-500 dark:text-pink-400">
+              Chat with Dottie
+            </DialogTitle>
           </div>
           <div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsFullscreen && setIsFullscreen(true)}
-              className="rounded-full hover:bg-pink-100"
+              className="rounded-full hover:bg-pink-100 dark:hover:bg-slate-800"
             >
-              <Maximize2 className="h-4 w-4 text-pink-600" />
+              <Maximize2 className="h-4 w-4 text-pink-500 dark:text-pink-400" />
             </Button>
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              onClick={onClose}
-              className="rounded-full hover:bg-pink-100"
-            >
-              <X className="h-4 w-4 text-pink-600" />
-            </Button> */}
           </div>
         </DialogHeader>
         <div className="flex h-[500px] flex-col">
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             <div className="space-y-4">
               {messages.length === 0 && (
-                <div className="flex h-full flex-col items-center justify-center p-8 text-center text-gray-500">
-                  <MessageCircle className="mb-4 h-12 w-12 text-pink-200" />
-                  <h3 className="mb-2 text-lg font-medium">Ask Dottie anything</h3>
-                  <p className="text-sm">
+                <div className="flex h-full flex-col items-center justify-center p-8 text-center text-gray-500 dark:text-slate-400">
+                  <MessageCircle className="mb-4 h-12 w-12 text-pink-200 dark:text-pink-300" />
+                  <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-slate-100">
+                    Ask Dottie anything
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-200">
                     {"I'm here to help with your menstrual health questions"}
                   </p>
                 </div>
@@ -135,8 +131,8 @@ export function ChatModal({ isOpen, onClose, initialMessage, setIsFullscreen }: 
                   <div
                     className={`max-w-[80%] rounded-xl p-3 ${
                       message.role === 'user'
-                        ? 'bg-pink-500 text-white'
-                        : 'border border-gray-100 bg-gray-50 text-gray-900'
+                        ? 'bg-pink-500 text-white dark:bg-pink-500'
+                        : 'border border-gray-200 bg-gray-50 text-gray-900 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-100'
                     }`}
                   >
                     {message.content}
@@ -145,26 +141,26 @@ export function ChatModal({ isOpen, onClose, initialMessage, setIsFullscreen }: 
               ))}
               {isLoading && (
                 <div className="flex animate-fadeIn justify-start">
-                  <div className="rounded-xl border border-gray-100 bg-gray-50 p-3">
-                    <Loader2 className="h-4 w-4 animate-spin text-pink-500" />
+                  <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 dark:border-slate-800 dark:bg-slate-800">
+                    <Loader2 className="h-4 w-4 animate-spin text-pink-500 dark:text-pink-400" />
                   </div>
                 </div>
               )}
             </div>
           </ScrollArea>
-          <div className="flex gap-2 border-t bg-white p-4 dark:bg-gray-900">
+          <div className="flex gap-2 border-t border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               disabled={isLoading}
-              className="rounded-full border-gray-200 focus:border-pink-300 focus:ring-pink-200"
+              className="rounded-full border-gray-200 bg-white focus:border-pink-300 focus:ring-pink-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-400 dark:focus:border-pink-400 dark:focus:ring-pink-500"
             />
             <Button
               onClick={() => handleSend()}
               disabled={isLoading}
-              className="rounded-full bg-pink-500 text-white hover:bg-pink-600"
+              className="rounded-full bg-pink-500 text-white hover:bg-pink-600 dark:bg-pink-500 dark:hover:bg-pink-600"
             >
               <Send className="h-4 w-4" />
             </Button>
